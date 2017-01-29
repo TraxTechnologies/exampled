@@ -14,7 +14,7 @@ argparser.add_argument(
     '--pidfile', default='exampled.pid', help='When forking, write the process id to this file'
 )
 argparser.add_argument(
-    '--detach', action='store_true', default=False, help='When forking, write the process id to this file'
+    '--detach', action='store_true', default=False, help='Background (fork) the process when set'
 )
 argparser.add_argument(
     '--quiet', action='store_true', default=False, help='Do not preserve stdin and stdout'
