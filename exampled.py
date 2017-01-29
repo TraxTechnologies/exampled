@@ -9,6 +9,7 @@ try:
 except:
     from daemon.pidlockfile import PIDLockFile
 
+
 argparser = argparse.ArgumentParser('exampled.py', 'Simple Example Python Daemon')
 argparser.add_argument(
     '--pidfile', default='exampled.pid', help='When forking, write the process id to this file'
@@ -23,6 +24,7 @@ argparser.add_argument(
     '--logfile', default='exampled.log', help='Write to this file'
 )
 
+
 def run(logfile):
     count = 0
     # Daemons usually have an 'endless' like loop someplace. This one is not
@@ -36,8 +38,8 @@ def run(logfile):
 
 
 if __name__ == '__main__':
+
     args = argparser.parse_args()
-    working_dir = os.getcwd()
     options = {
         'pidfile': None,
         'detach_process': args.detach,
@@ -45,7 +47,6 @@ if __name__ == '__main__':
         'stdout': None,
         'working_directory': '/',
     }
-
 
     # The pid file allows us to find the process id of the daemon after it has
     # been launched and backrouned.
