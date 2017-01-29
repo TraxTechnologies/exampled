@@ -10,7 +10,7 @@ except:
 
 argparser = argparse.ArgumentParser('exampled.py', 'Simple Example Python Daemon')
 argparser.add_argument(
-    '--pidfile', help='When forking, write the process id to this file'
+    '--pidfile', default='exampled.pid', help='When forking, write the process id to this file'
 )
 argparser.add_argument(
     '--detach', action='store_true', default=False, help='When forking, write the process id to this file'
@@ -42,7 +42,7 @@ if __name__ == '__main__':
         'detach_process': args.detach,
         'stderr': None,
         'stdout': None,
-        'working_directory': os.getcwd(),
+        'working_directory': '/',
     }
 
 
@@ -53,6 +53,8 @@ if __name__ == '__main__':
 
     # Daemons that conform to good unix style close all file handlers and
     # change directory to the root of the filesystem before forking.
+    # For testing, stay in the current working directory
+    options['working_directory'] = os.getcwd()
 
     if not args.quiet:
         # Here, we are telling python daemon not to close standard out or standard
